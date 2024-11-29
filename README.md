@@ -25,7 +25,7 @@ ls -al distribution/target/
 // change the $version to your actual path
 cd distribution/target/nacos-server-$version/nacos/bin
 ```
-###下载编译后压缩包方式(**强烈推荐**)
+### 下载编译后压缩包方式(**强烈推荐**)
 您可以从 [最新稳定版本](https://github.com/alibaba/nacos/releases) 下载 nacos-server-$version.zip 包。
 本实例使用的是2.4.3版本
 ```shell
@@ -63,3 +63,23 @@ cd nacos/bin
 `shutdown.cmd`
 
 或者双击shutdown.cmd运行文件。
+
+## 5. 服务启动成功后访问nacos管理界面
+
+http://localhost:8848/nacos/
+
+界面中服务管理菜单服务列表就是我们需要查看注册服务接口的地方。
+
+### 6. 创建一个`spring-boot-nacos-provider`项目用于注册服务
+下载实例代码，并启动`spring-boot-nacos-provider`项目，然后在nacos管理界面中 服务管理-服务列表 会看到注册成功的项目
+
+### 7. 创建一个`spring-boot-nacos-consumer`项目用于发现并调用服务
+启动`spring-boot-nacos-consumer`项目，在nacos管理界面中 服务管理-服务列表 会看到注册服务，在订阅者列表中会看到消费服务方
+
+### 8. 远程访问测试
+浏览器访问 `spring-boot-nacos-consumer`服务 地址 http://localhost:8082/consume，consumer端会远程调用provider端接口并返回预期结果
+
+### 9. 注意事项
+
+***SpringBoot版本 spring-cloud-dependencies版本 spring-cloud-alibaba-dependencies版本一定要按照 nacos官网说明匹配对应，否则项目启动会报错***
+[Spring Boot 与 Spring Cloud Alibaba 版本对应关系](https://sca.aliyun.com/docs/2023/best-practice/spring-boot-to-spring-cloud/#spring-boot-%E4%B8%8E-spring-cloud-alibaba-%E7%89%88%E6%9C%AC%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB)
