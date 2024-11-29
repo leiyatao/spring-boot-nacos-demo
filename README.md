@@ -77,7 +77,9 @@ http://localhost:8848/nacos/
 启动`spring-boot-nacos-consumer`项目，在nacos管理界面中 服务管理-服务列表 会看到注册服务，在订阅者列表中会看到消费服务方
 
 ### 8. 远程访问测试
-浏览器访问 `spring-boot-nacos-consumer`服务 地址 http://localhost:8082/consume，consumer端会远程调用provider端接口并返回预期结果
+浏览器访问 `spring-boot-nacos-consumer`服务 地址 http://localhost:8082/consume
+
+consumer端会远程调用provider端接口并返回预期结果
 
 ### 9. 注意事项
 
