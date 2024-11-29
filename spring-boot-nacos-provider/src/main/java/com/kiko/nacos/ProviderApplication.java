@@ -22,10 +22,3 @@ public class ProviderApplication {
     }
 }
 
-@RestController
-class TestController {
-    @GetMapping("/hello")
-    public String hello() {
-        return "Hello from Service Provider";
-    }
-}
