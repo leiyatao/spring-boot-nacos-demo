@@ -1,6 +1,6 @@
 server:
   port: 8081
-
+# 服务注册
 spring:
   application:
     name: service-provider
@@ -8,3 +8,11 @@ spring:
     nacos:
       discovery:
         server-addr: 192.168.233.71:8848
+
+
+## 服务配置
+      serverAddr: 192.168.233.71:8848
+  config:
+    import:
+      - nacos:nacos-config-example.properties?refreshEnabled=true
+      - nacos:remote_config.properties?refreshEnabled=true
