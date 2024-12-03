@@ -2,10 +2,16 @@ package com.kiko.nacos.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.core.env.ConfigurableEnvironment;
+import org.springframework.core.env.Environment;
+import org.springframework.core.env.MutablePropertySources;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Arrays;
 
 /**
 * @program: spring-boot-nacos-demo
@@ -38,5 +44,16 @@ public class TestController {
     @GetMapping("/getdbusername")
     public String getDbusername(){
         return dbusername;
+    }
+
+    @Autowired
+    private Environment environment;
+
+    @GetMapping("/config")
+    public String getConfig() {
+        String datasourceUrl = environment.getProperty("spring.datasource.druid.url");
+        String serverPort = environment.getProperty("spring.datasource.druid.username");
+
+        return "Datasource URL: " + datasourceUrl + ", Server Port: " + serverPort;
     }
 }
